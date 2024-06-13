@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule,MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -33,7 +33,7 @@ import { CreateCustomerFormComponent } from './create-customer-form/create-custo
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
-    MatDatepickerModule
+    MatDatepickerModule,
   ]
 })
 export class AppComponent {

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional, importProvidersFrom } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
@@ -20,8 +20,8 @@ import { CreateCustomerFormComponent } from '../create-customer-form/create-cust
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
 export class CreateAssessmentModalComponent implements OnInit {
   createAssessmentForm: FormGroup;
@@ -31,7 +31,7 @@ export class CreateAssessmentModalComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     public dialogRef: MatDialogRef<CreateAssessmentModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog 
   ) {
     this.createAssessmentForm = this.fb.group({
