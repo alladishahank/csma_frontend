@@ -1,0 +1,76 @@
+.assessment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+}
+
+.full-width {
+  width: 80%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-dialog-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 16px 0;
+}
+
+mat-dialog-content {
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-dialog-actions {
+  padding-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+button[mat-button] {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.input-container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-customer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.new-customer-button {
+  color: #3f51b5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: -8px;
+}
+
+mat-form-field {
+  background: #ffffff;
+  padding: 0px;
+  border-radius: 4px;
+}
+
+mat-dialog-container {
+  max-width: 600px;
+  padding: 16px;
+}

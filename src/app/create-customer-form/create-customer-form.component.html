@@ -1,0 +1,41 @@
+<div mat-dialog-content>
+  <form [formGroup]="createCustomerForm" class="customer-form">
+    <div>
+      <h1 mat-dialog-title>New Customer</h1>
+    </div>
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Customer Name</mat-label>
+        <input matInput formControlName="customerName">
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Tenant ID</mat-label>
+        <input matInput formControlName="tenantId">
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Contact Email</mat-label>
+        <input matInput formControlName="contactEmail">
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Subscription Start Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="subscriptionStartDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSubmit()" cdkFocusInitial>Create Customer</button>
+</div>

@@ -1,0 +1,49 @@
+<div mat-dialog-content>
+  <form [formGroup]="createAssessmentForm" class="assessment-form">
+    <div>
+      <h1 mat-dialog-title>New Assessment</h1>
+    </div>
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Customer</mat-label>
+        <mat-select formControlName="customerName">
+          <mat-option *ngFor="let customer of customers" [value]="customer">{{ customer }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="new-customer-container">
+        <button mat-button type="button" class="new-customer-button" (click)="openCreateCustomerModal()">New Customer</button>
+      </div>
+    </div>
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Project ID</mat-label>
+        <input matInput formControlName="projectId">
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>API Key</mat-label>
+        <input matInput formControlName="apiKey">
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Assessment Description</mat-label>
+        <textarea matInput formControlName="assessmentDescription"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Customer Contact Email</mat-label>
+        <input matInput formControlName="customerContactEmail">
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSubmit()" cdkFocusInitial>Next</button>
+</div>
