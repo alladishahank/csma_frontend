@@ -22,7 +22,7 @@ import { Customer } from './customer.model';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class CreateCustomerFormComponent implements OnInit {

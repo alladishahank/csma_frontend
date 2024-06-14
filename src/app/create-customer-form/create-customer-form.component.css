@@ -77,3 +77,8 @@ button[mat-button]:not([color="primary"]) {
 button[mat-button][color="primary"] {
   color: #3f51b5;
 }
+
+button[mat-button] {
+  font-size: 0.875rem;
+  font-weight: 500;
+}

@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
 import { CreateAssessmentModalComponent } from './create-assessment-modal/create-assessment-modal.component';
 import { CreateCustomerFormComponent } from './create-customer-form/create-customer-form.component';
 
@@ -34,6 +35,7 @@ import { CreateCustomerFormComponent } from './create-customer-form/create-custo
     CommonModule,
     HttpClientModule,
     MatDatepickerModule,
+    MatIconModule
   ]
 })
 export class AppComponent {

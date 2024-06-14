@@ -2,16 +2,19 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button'; // Ensure to import MatButtonModule
+import { Assessment } from './assessment.model';
 
 @Component({
   selector: 'app-assessment-table',
   templateUrl: './assessment-table.component.html',
   styleUrls: ['./assessment-table.component.css'],
   standalone: true,
-  imports: [CommonModule, MatTableModule]
+  imports: [CommonModule, MatTableModule, MatIconModule, MatButtonModule]
 })
 export class AssessmentTableComponent implements OnInit {
-  displayedColumns: string[] = ['assessmentName', 'customerName', 'projectId', 'assessorName', 'assessmentDate', 'amaScore'];
+  displayedColumns: string[] = ['assessmentName', 'customerName', 'projectId', 'assessorName', 'assessmentDate', 'amaScore', 'edit'];
   dataSource: any[] = [];
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
@@ -29,5 +32,9 @@ export class AssessmentTableComponent implements OnInit {
       },
       error: (err) => console.error('Error fetching assessments:', err)
     });
+  }
+
+  onEdit(element: Assessment): void {
+    console.log('Edit button clicked for: ', element);
   }
 }
