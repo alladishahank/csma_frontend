@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateAssessmentModalComponent } from './create-assessment-modal/create-assessment-modal.component';
 import { CreateCustomerFormComponent } from './create-customer-form/create-customer-form.component';
+import { ViewAssessmentComponent } from './view-assessment/view-assessment.component'; 
+import { HomePageComponent } from './home-page/home-page.component';
 
 export const routes: Routes = [
   { path: 'create-assessment', component: CreateAssessmentModalComponent },
+  { path: 'view-assessment', component: ViewAssessmentComponent },
   { path: 'create-customer', component: CreateCustomerFormComponent },
-  { path: '', redirectTo: '/create-assessment', pathMatch: 'full' },
-  { path: '**', redirectTo: '/create-assessment' }
+  { path: 'home', component: HomePageComponent }, 
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
