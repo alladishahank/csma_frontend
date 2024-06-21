@@ -7,7 +7,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 export const routes: Routes = [
   { path: 'create-assessment', component: CreateAssessmentModalComponent },
-  { path: 'view-assessment', component: ViewAssessmentComponent },
+  { path: 'view-assessment/:id', component: ViewAssessmentComponent },
   { path: 'create-customer', component: CreateCustomerFormComponent },
   { path: 'home', component: HomePageComponent }, 
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 

@@ -1,2 +1,26 @@
-<h1>Hello World</h1>
-
+<div class="assessment-details" *ngIf="assessmentDetails">
+  <h1 class="assessment-name">{{ assessmentDetails.assessmentName }}</h1>
+  <button mat-icon-button class="edit-button" >
+    <mat-icon>edit</mat-icon>
+  </button>
+  <div class="assessment-info">
+    <p><strong>Customer Name:</strong> {{ assessmentDetails.customerName }}</p>
+    <p><strong>Project ID:</strong> {{ assessmentDetails.projectId }}</p>
+    <p><strong>Assessor Name:</strong> {{ assessmentDetails.assessorName }}</p>
+    <p><strong>Assessment Date:</strong> {{ assessmentDetails.assessmentDate }}</p>
+    <p><strong>AMA Score:</strong> {{ assessmentDetails.amaScore }}</p>
+    <p class="scoring-level"><strong>Customer Scoring Level:  </strong> <span class="scoring-level">{{ getCustomerScoringLevel(assessmentDetails.amaScore) }}</span></p>
+  </div>
+  <div *ngFor="let category of groupedScores" class="category-section">
+    <h3 class="category-name">{{ category.categoryName }}</h3>
+    <div class="parameter-list">
+      <div *ngFor="let score of category.scores" class="parameter-item">
+        <p style="font-weight: 440;">{{ score.parameterName }}:   <span class="parameter-score">{{ score.score }}</span></p>
+      </div>
+    </div>
+    <hr class="divider">
+  </div>
+</div>
+<div *ngIf="!assessmentDetails" class="loading">
+  <p>Loading assessment details...</p>
+</div>

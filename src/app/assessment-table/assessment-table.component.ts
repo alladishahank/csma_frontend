@@ -35,8 +35,7 @@ export class AssessmentTableComponent implements OnInit {
     });
   }
 
-  onEdit(element: Assessment): void {
-    console.log('Edit button clicked for: ', element);
-    this.router.navigate(['/view-assessment']);
-  }
+  onView(element: any): void {
+    this.router.navigate(['/view-assessment', element.id]);
+  } 
 }

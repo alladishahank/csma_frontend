@@ -1,0 +1,100 @@
+/* Include a modern font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.assessment-details {
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4; /* Slightly darker grey */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 30px auto; /* More spacing around the component */
+  position: relative; /* Ensure positioning for child elements */
+}
+
+.edit-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #3f51b5;
+  color: #ffffff;
+  padding: 8px; /* Reduced padding for smaller button */
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.edit-button mat-icon {
+  font-size: 20px; /* Slightly smaller icon */
+}
+
+.edit-button:hover {
+  background-color: #303f9f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.assessment-name {
+  font-size: 24px; /* Slightly smaller font size */
+  color: #3f51b5;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 400; /* Normal weight for better readability */
+}
+
+.assessment-info p {
+  font-size: 16px; /* Smaller font size */
+  margin: 10px 0; /* More spacing between lines */
+  line-height: 1.5; /* Improved line height for readability */
+}
+
+.assessment-info strong {
+  color: #333;
+}
+
+.scoring-level {
+  font-style: italic;
+  font-size: 18px; /* Slightly smaller font size */
+  color: #d32f2f;
+  margin-top: 10px; /* Add some space above the scoring level */
+}
+
+.category-section {
+  margin-top: 20px; /* More spacing above categories */
+}
+
+.category-name {
+  font-size: 18px; /* Slightly smaller font size */
+  color: #3f51b5;
+  margin-bottom: 10px;
+  font-weight: 500; /* Medium weight */
+}
+
+.parameter-list {
+  padding-left: 20px;
+}
+
+.parameter-item {
+  font-size: 16px; /* Smaller font size */
+  margin: 8px 0; /* More spacing between parameters */
+}
+
+.parameter-score {
+  color: #555; /* Different color for scores */
+  font-weight: 500; /* Medium weight for scores */
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 20px 0; /* More spacing around the divider */
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px; /* Smaller font size */
+  color: #999;
+}
