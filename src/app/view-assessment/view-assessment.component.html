@@ -1,6 +1,6 @@
 <div class="assessment-details" *ngIf="assessmentDetails">
   <h1 class="assessment-name">{{ assessmentDetails.assessmentName }}</h1>
-  <button mat-icon-button class="edit-button" >
+  <button mat-icon-button class="edit-button" *ngIf="!isEditMode" (click)="onEdit()">
     <mat-icon>edit</mat-icon>
   </button>
   <div class="assessment-info">
@@ -9,16 +9,26 @@
     <p><strong>Assessor Name:</strong> {{ assessmentDetails.assessorName }}</p>
     <p><strong>Assessment Date:</strong> {{ assessmentDetails.assessmentDate }}</p>
     <p><strong>AMA Score:</strong> {{ assessmentDetails.amaScore }}</p>
-    <p class="scoring-level"><strong>Customer Scoring Level:  </strong> <span class="scoring-level">{{ getCustomerScoringLevel(assessmentDetails.amaScore) }}</span></p>
+    <p class="scoring-level">
+      <strong>Customer Scoring Level:</strong>
+      <span matTooltip="{{ getTooltipText(getCustomerScoringLevel(assessmentDetails.amaScore)) }}" class="scoring-level">{{ getCustomerScoringLevel(assessmentDetails.amaScore) }}</span>
+    </p>
   </div>
-  <div *ngFor="let category of groupedScores" class="category-section">
+  <div *ngFor="let category of groupedScores, let i = index" class="category-section">
     <h3 class="category-name">{{ category.categoryName }}</h3>
     <div class="parameter-list">
       <div *ngFor="let score of category.scores" class="parameter-item">
-        <p style="font-weight: 440;">{{ score.parameterName }}:   <span class="parameter-score">{{ score.score }}</span></p>
+        <p style="font-weight: 440;">
+          {{ score.parameterName }}:
+          <span *ngIf="!isEditMode" class="parameter-score">{{ score.score }}</span>
+          <input *ngIf="isEditMode" type="number" [(ngModel)]="score.score" step="0.1" min="0" max="10" />
+        </p>
       </div>
     </div>
-    <hr class="divider">
+    <hr class="divider" *ngIf="i < groupedScores.length - 1">
+  </div>
+  <div class="save-button-container" *ngIf="isEditMode">
+    <button class="save-button" (click)="onSave()">Save Changes</button>
   </div>
 </div>
 <div *ngIf="!assessmentDetails" class="loading">

@@ -1,100 +1,128 @@
-/* Include a modern font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+}
 
 .assessment-details {
-  font-family: 'Roboto', sans-serif;
-  padding: 20px;
-  background-color: #f4f4f4; /* Slightly darker grey */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
-  margin: 30px auto; /* More spacing around the component */
-  position: relative; /* Ensure positioning for child elements */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    position: relative;
 }
 
 .edit-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #3f51b5;
-  color: #ffffff;
-  padding: 8px; /* Reduced padding for smaller button */
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #3f51b5;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
 }
 
 .edit-button mat-icon {
-  font-size: 20px; /* Slightly smaller icon */
+    font-size: 20px;
 }
 
 .edit-button:hover {
-  background-color: #303f9f;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #303f9f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.save-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.save-button {
+    background-color: #3f51b5; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+}
+
+.save-button:hover {
+    background-color: #2c3ea9; 
 }
 
 .assessment-name {
-  font-size: 24px; /* Slightly smaller font size */
-  color: #3f51b5;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: 400; /* Normal weight for better readability */
+    font-size: 24px;
+    color: #3f51b5;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
 }
 
 .assessment-info p {
-  font-size: 16px; /* Smaller font size */
-  margin: 10px 0; /* More spacing between lines */
-  line-height: 1.5; /* Improved line height for readability */
+    font-size: 16px;
+    margin: 5px 0;
+    font-family: 'Arial', sans-serif;
 }
 
 .assessment-info strong {
-  color: #333;
+    color: #333;
 }
 
 .scoring-level {
-  font-style: italic;
-  font-size: 18px; /* Slightly smaller font size */
-  color: #d32f2f;
-  margin-top: 10px; /* Add some space above the scoring level */
+    font-style: italic;
+    font-size: 20px;
+    color: #d32f2f;
 }
 
 .category-section {
-  margin-top: 20px; /* More spacing above categories */
+    margin-top: 20px;
 }
 
 .category-name {
-  font-size: 18px; /* Slightly smaller font size */
-  color: #3f51b5;
-  margin-bottom: 10px;
-  font-weight: 500; /* Medium weight */
+    font-size: 18px;
+    color: #3f51b5;
+    margin-bottom: 10px;
 }
 
 .parameter-list {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
 .parameter-item {
-  font-size: 16px; /* Smaller font size */
-  margin: 8px 0; /* More spacing between parameters */
+    font-size: 16px;
+    margin: 5px 0;
 }
 
 .parameter-score {
-  color: #555; /* Different color for scores */
-  font-weight: 500; /* Medium weight for scores */
+    color: #007bff;
 }
 
-hr {
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 20px 0; /* More spacing around the divider */
+.parameter-item input[type="number"] {
+    font-size: 14px;
+    padding: 2px 5px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+hr.divider {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
 }
 
 .loading {
-  text-align: center;
-  font-size: 18px; /* Smaller font size */
-  color: #999;
+    text-align: center;
+    font-size: 18px;
+    color: #999;
 }
