@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,7 +22,7 @@ export class ViewAssessmentComponent implements OnInit {
   groupedScores: any[] = [];
   isEditMode: boolean = false;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.assessmentId = this.route.snapshot.paramMap.get('id');
@@ -124,5 +124,9 @@ export class ViewAssessmentComponent implements OnInit {
         console.error('Error updating scores:', err);
       }
     });
+  }
+
+  goBack() {
+    this.router.navigate(['/home']);
   }
 }

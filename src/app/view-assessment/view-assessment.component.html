@@ -1,4 +1,7 @@
 <div class="assessment-details" *ngIf="assessmentDetails">
+  <button mat-icon-button class="back-button" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
   <h1 class="assessment-name">{{ assessmentDetails.assessmentName }}</h1>
   <button mat-icon-button class="edit-button" *ngIf="!isEditMode" (click)="onEdit()">
     <mat-icon>edit</mat-icon>
