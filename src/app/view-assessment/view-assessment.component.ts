@@ -6,15 +6,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
-import { response } from 'express';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
+import { LoadingDialogComponent } from '../loading-dialog/loading-dialog.component';
 
 @Component({
   selector: 'app-view-assessment',
   templateUrl: './view-assessment.component.html',
   styleUrls: ['./view-assessment.component.css'],
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule, FormsModule]
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule, FormsModule, MatDialogModule]
 })
 export class ViewAssessmentComponent implements OnInit {
   assessmentId: string | null = null;
@@ -22,7 +23,7 @@ export class ViewAssessmentComponent implements OnInit {
   groupedScores: any[] = [];
   isEditMode: boolean = false;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.assessmentId = this.route.snapshot.paramMap.get('id');
@@ -82,7 +83,6 @@ export class ViewAssessmentComponent implements OnInit {
   }
 
   onEdit(): void {
-    console.log('Edit button clicked');
     this.isEditMode = true;
   }
 
@@ -96,13 +96,10 @@ export class ViewAssessmentComponent implements OnInit {
   }
 
   onSave(): void {
-    for (const category of this.groupedScores) {
-      for (const score of category.scores) {
-        if (score.score > 10) {
-          score.score = 10;
-        }
-      }
-    }
+    const dialogRef = this.dialog.open(LoadingDialogComponent, {
+      disableClose: true
+    });
+
     const jsonPayload = {
       assessmentId: this.assessmentDetails.id,
       scores: this.groupedScores.flatMap(category =>
@@ -112,16 +109,19 @@ export class ViewAssessmentComponent implements OnInit {
         }))
       )
     };
-    console.log('Generated JSON:', JSON.stringify(jsonPayload, null, 2));
 
     this.http.post('http://localhost:8080/api/assessment-scores/updateScores', jsonPayload).subscribe({
       next: (response) => {
         console.log('Scores updated successfully:', response);
         this.fetchAllAssessmentDetails(this.assessmentId as string); 
-        this.isEditMode = false;
+        setTimeout(() => {
+          dialogRef.close();
+          this.isEditMode = false;
+        }, 1000); 
       },
       error: (err) => {
         console.error('Error updating scores:', err);
+        dialogRef.close();
       }
     });
   }

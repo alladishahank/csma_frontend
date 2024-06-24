@@ -17,7 +17,7 @@
       <span matTooltip="{{ getTooltipText(getCustomerScoringLevel(assessmentDetails.amaScore)) }}" class="scoring-level">{{ getCustomerScoringLevel(assessmentDetails.amaScore) }}</span>
     </p>
   </div>
-  <div *ngFor="let category of groupedScores, let i = index" class="category-section">
+  <div *ngFor="let category of groupedScores; let i = index" class="category-section">
     <h3 class="category-name">{{ category.categoryName }}</h3>
     <div class="parameter-list">
       <div *ngFor="let score of category.scores" class="parameter-item">

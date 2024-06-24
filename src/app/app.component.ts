@@ -14,7 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateAssessmentModalComponent } from './create-assessment-modal/create-assessment-modal.component';
 import { CreateCustomerFormComponent } from './create-customer-form/create-customer-form.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -35,7 +35,8 @@ import { CreateCustomerFormComponent } from './create-customer-form/create-custo
     CommonModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AppComponent {

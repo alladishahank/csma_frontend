@@ -1,0 +1,15 @@
+.loading-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .loading-dialog p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #3f51b5;
+  }
+  
