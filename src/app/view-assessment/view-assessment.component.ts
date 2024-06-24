@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
+import { response } from 'express';
+
 
 @Component({
   selector: 'app-view-assessment',
@@ -84,9 +86,43 @@ export class ViewAssessmentComponent implements OnInit {
     this.isEditMode = true;
   }
 
+  validateScore(score: any): void {
+    if (score.score > 10) {
+      score.score = 10;
+    }
+    if (score.score < 0) {
+      score.score = 0;
+    }
+  }
+
   onSave(): void {
-    console.log('Save button clicked');
-    console.log(this.assessmentDetails);
-    this.isEditMode = false;
+    for (const category of this.groupedScores) {
+      for (const score of category.scores) {
+        if (score.score > 10) {
+          score.score = 10;
+        }
+      }
+    }
+    const jsonPayload = {
+      assessmentId: this.assessmentDetails.id,
+      scores: this.groupedScores.flatMap(category =>
+        category.scores.map((score: { parameterId: any; score: any; }) => ({
+          parameterId: score.parameterId,
+          score: score.score
+        }))
+      )
+    };
+    console.log('Generated JSON:', JSON.stringify(jsonPayload, null, 2));
+
+    this.http.post('http://localhost:8080/api/assessment-scores/updateScores', jsonPayload).subscribe({
+      next: (response) => {
+        console.log('Scores updated successfully:', response);
+        this.fetchAllAssessmentDetails(this.assessmentId as string); 
+        this.isEditMode = false;
+      },
+      error: (err) => {
+        console.error('Error updating scores:', err);
+      }
+    });
   }
 }

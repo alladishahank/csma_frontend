@@ -21,7 +21,7 @@
         <p style="font-weight: 440;">
           {{ score.parameterName }}:
           <span *ngIf="!isEditMode" class="parameter-score">{{ score.score }}</span>
-          <input *ngIf="isEditMode" type="number" [(ngModel)]="score.score" step="0.1" min="0" max="10" />
+          <input *ngIf="isEditMode" type="number" [(ngModel)]="score.score" (input)="validateScore(score)" step="0.1" min="0" max="10" />
         </p>
       </div>
     </div>
