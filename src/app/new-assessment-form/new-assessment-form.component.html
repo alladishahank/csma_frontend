@@ -1,10 +1,37 @@
-<div *ngIf="assessmentData">
+<div *ngIf="assessmentData" class="assessment-form-container">
+    <div class="form-header">
+      <button mat-icon-button class="back-button" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button mat-icon-button class="upload-button" matTooltip="Upload a JSON" (click)="fileInput.click()">
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+      <input type="file" #fileInput (change)="onFileUpload($event)" style="display: none;" />
+    </div>
+    
     <h1>New Assessment</h1>
-    <p><strong>Customer Name:</strong> {{ assessmentData.customerName }}</p>
-    <p><strong>Project ID:</strong> {{ assessmentData.projectId }}</p>
-    <p><strong>API Key:</strong> {{ assessmentData.apiKey }}</p>
-    <p><strong>Assessment Description:</strong> {{ assessmentData.assessmentDescription }}</p>
-    <p><strong>Customer Contact Email:</strong> {{ assessmentData.customerContactEmail }}</p>
+    <div class="assessment-info">
+      <p><strong>Customer Name:</strong> {{ assessmentData.customerName }}</p>
+      <p><strong>Project ID:</strong> {{ assessmentData.projectId }}</p>
+      <p><strong>Assessment Description:</strong> {{ assessmentData.assessmentDescription }}</p>
+      <p><strong>Customer Contact Email:</strong> {{ assessmentData.customerContactEmail }}</p>
+    </div>
+    
+    <div *ngFor="let category of categories, let i = index" class="category-section">
+      <h3 class="category-name">{{ category.name }}</h3>
+      <div class="parameter-list">
+        <div *ngFor="let parameter of category.parameters" class="parameter-item">
+          <p>
+            {{ parameter.name }}: 
+            <input type="number" [(ngModel)]="parameter.score" step="0.1" min="0" max="10" />
+          </p>
+        </div>
+      </div>
+      <hr class="divider" *ngIf="i < categories.length - 1">
+    </div>
+    <div class="next-button-container">
+      <button class="next-button" (click)="onNext()">Next</button>
+    </div>
   </div>
   <div *ngIf="!assessmentData">
     <p>Loading assessment details...</p>
