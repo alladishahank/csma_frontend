@@ -25,6 +25,9 @@ import { Router } from '@angular/router';
   ]
 })
 export class CreateAssessmentModalComponent implements OnInit {
+onNext() {
+throw new Error('Method not implemented.');
+}
 openCreateCustomerModal() {
 throw new Error('Method not implemented.');
 }

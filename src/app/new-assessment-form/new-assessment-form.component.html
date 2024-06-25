@@ -1,0 +1,12 @@
+<div *ngIf="assessmentData">
+    <h1>New Assessment</h1>
+    <p><strong>Customer Name:</strong> {{ assessmentData.customerName }}</p>
+    <p><strong>Project ID:</strong> {{ assessmentData.projectId }}</p>
+    <p><strong>API Key:</strong> {{ assessmentData.apiKey }}</p>
+    <p><strong>Assessment Description:</strong> {{ assessmentData.assessmentDescription }}</p>
+    <p><strong>Customer Contact Email:</strong> {{ assessmentData.customerContactEmail }}</p>
+  </div>
+  <div *ngIf="!assessmentData">
+    <p>Loading assessment details...</p>
+  </div>
+  

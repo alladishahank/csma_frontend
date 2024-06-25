@@ -9,6 +9,9 @@
         <mat-select formControlName="customerName">
           <mat-option *ngFor="let customer of customers" [value]="customer">{{ customer }}</mat-option>
         </mat-select>
+        <mat-error *ngIf="createAssessmentForm.controls['customerName'].hasError('required')">
+          Customer is required
+        </mat-error>
       </mat-form-field>
       <div class="new-customer-container">
         <button mat-button type="button" class="new-customer-button" (click)="openCreateCustomerModal()">New Customer</button>
@@ -18,32 +21,44 @@
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Project ID</mat-label>
         <input matInput formControlName="projectId">
+        <mat-error *ngIf="createAssessmentForm.controls['projectId'].hasError('required')">
+          Project ID is required
+        </mat-error>
       </mat-form-field>
     </div>
-
     <div class="input-container">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>API Key</mat-label>
         <input matInput formControlName="apiKey">
+        <mat-error *ngIf="createAssessmentForm.controls['apiKey'].hasError('required')">
+          API Key is required
+        </mat-error>
       </mat-form-field>
     </div>
-
     <div class="input-container">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Assessment Description</mat-label>
         <textarea matInput formControlName="assessmentDescription"></textarea>
+        <mat-error *ngIf="createAssessmentForm.controls['assessmentDescription'].hasError('required')">
+          Assessment Description is required
+        </mat-error>
       </mat-form-field>
     </div>
-
     <div class="input-container">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Customer Contact Email</mat-label>
         <input matInput formControlName="customerContactEmail">
+        <mat-error *ngIf="createAssessmentForm.controls['customerContactEmail'].hasError('required')">
+          Customer Contact Email is required
+        </mat-error>
+        <mat-error *ngIf="createAssessmentForm.controls['customerContactEmail'].hasError('email')">
+          Enter a valid email
+        </mat-error>
       </mat-form-field>
     </div>
   </form>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" (click)="onSubmit()" cdkFocusInitial>Next</button>
+  <button mat-button color="primary" (click)="onNext()" autofocus>Next</button>
 </div>
