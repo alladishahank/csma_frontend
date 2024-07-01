@@ -43,24 +43,53 @@ export class NewAssessmentFormComponent implements OnInit {
 
   onNext(): void {
     console.log('Next button clicked');
+    this.router.navigate(['/assessment-summary']);
   }
 
   goBack() {
     this.router.navigate(['/home']);
   }
-
+  
   onFileUpload(event: any): void {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (e: any) => {
       try {
         const json = JSON.parse(e.target.result);
-        this.assessmentData = json;
-        this.fetchCategories();  
-      } catch (error) {
+        
+        // CHANGE: Preserve existing assessment data while incorporating new data
+        this.assessmentData = {
+          ...this.assessmentData,  // Spread existing data
+          ...json,                 // Spread new data (will overwrite existing properties if present in json)
+          categories: json.categories || this.assessmentData.categories  // Use new categories if present, otherwise keep existing
+        };
+  
+        // CHANGE: Call method to update categories
+        this.updateCategoriesWithUploadedData();
+      } 
+      catch (error) {
         console.error('Error parsing JSON:', error);
       }
     };
     reader.readAsText(file);
+  }
+  
+  updateCategoriesWithUploadedData(): void {
+    if (this.assessmentData && this.assessmentData.categories) {
+      this.categories = this.assessmentData.categories.map((uploadedCategory: any) => {
+        const existingCategory = this.categories.find(c => c.name === uploadedCategory.name);
+        if (existingCategory) {
+          existingCategory.parameters = existingCategory.parameters.map((param: any) => {
+            const uploadedParam = uploadedCategory.parameters.find((p: any) => p.name === param.name);
+            return {
+              ...param,
+              score: uploadedParam ? uploadedParam.score : param.score
+            };
+          });
+          return existingCategory;
+        }
+        return uploadedCategory;
+      });
+    }
   }
 }

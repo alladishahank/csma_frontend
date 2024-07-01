@@ -129,4 +129,8 @@ export class ViewAssessmentComponent implements OnInit {
   goBack() {
     this.router.navigate(['/home']);
   }
+
+  onGenerate() {
+    
+  }
 }

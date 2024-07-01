@@ -5,6 +5,7 @@ import { CreateCustomerFormComponent } from './create-customer-form/create-custo
 import { ViewAssessmentComponent } from './view-assessment/view-assessment.component'; 
 import { HomePageComponent } from './home-page/home-page.component';
 import { NewAssessmentFormComponent } from './new-assessment-form/new-assessment-form.component';
+import { SummaryPageComponent } from './summary-page/summary-page.component';
 
 
 export const routes: Routes = [
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'create-customer', component: CreateCustomerFormComponent },
   { path: 'home', component: HomePageComponent }, 
   { path: 'new-assessment', component: NewAssessmentFormComponent },
+  { path: 'assessment-summary', component: SummaryPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
   { path: '**', redirectTo: '/home' }
 ];

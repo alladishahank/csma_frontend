@@ -3,7 +3,7 @@
     <mat-icon>arrow_back</mat-icon>
   </button>
   <h1 class="assessment-name">{{ assessmentDetails.assessmentName }}</h1>
-  <button mat-icon-button class="edit-button" *ngIf="!isEditMode" (click)="onEdit()">
+  <button mat-icon-button class="edit-button" matTooltip="Edit Assessment" *ngIf="!isEditMode" (click)="onEdit()">
     <mat-icon>edit</mat-icon>
   </button>
   <div class="assessment-info">
@@ -32,6 +32,9 @@
   </div>
   <div class="save-button-container" *ngIf="isEditMode">
     <button class="save-button" (click)="onSave()">Save Changes</button>
+  </div>
+  <div class="save-button-container" *ngIf="!isEditMode">
+    <button class="save-button" (click)="onGenerate()">Generate Report</button>
   </div>
 </div>
 <div *ngIf="!assessmentDetails" class="loading">
