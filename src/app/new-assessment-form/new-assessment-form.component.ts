@@ -43,6 +43,7 @@ export class NewAssessmentFormComponent implements OnInit {
 
   onNext(): void {
     console.log('Next button clicked');
+    this.assessmentDataService.setCategories(this.categories);
     this.router.navigate(['/assessment-summary']);
   }
 
@@ -57,14 +58,12 @@ export class NewAssessmentFormComponent implements OnInit {
       try {
         const json = JSON.parse(e.target.result);
         
-        // CHANGE: Preserve existing assessment data while incorporating new data
         this.assessmentData = {
-          ...this.assessmentData,  // Spread existing data
-          ...json,                 // Spread new data (will overwrite existing properties if present in json)
-          categories: json.categories || this.assessmentData.categories  // Use new categories if present, otherwise keep existing
+          ...this.assessmentData,  
+          ...json,                 
+          categories: json.categories || this.assessmentData.categories  
         };
   
-        // CHANGE: Call method to update categories
         this.updateCategoriesWithUploadedData();
       } 
       catch (error) {

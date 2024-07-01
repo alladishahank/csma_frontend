@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AssessmentDataService {
   private assessmentData: any;
+  private categories: any[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -16,6 +17,14 @@ export class AssessmentDataService {
 
   getAssessmentData(): any {
     return this.assessmentData;
+  }
+
+  setCategories(categories: any[]): void {
+    this.categories = categories;
+  }
+
+  getCategories(): any[] {
+    return this.categories;
   }
 
   fetchCategories(): Observable<any> {

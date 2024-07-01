@@ -1,1 +1,35 @@
-<p>summary-page works!</p>
+<div class="summary-container" *ngIf="assessmentData">
+    <button mat-icon-button class="back-button" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Assessment Summary</h1>
+    <div class="assessment-info">
+      <p><strong>Customer Name:</strong> {{ assessmentData.customerName }}</p>
+      <p><strong>Project ID:</strong> {{ assessmentData.projectId }}</p>
+      <p><strong>API Key:</strong> {{ assessmentData.apiKey }}</p>
+      <p><strong>Assessment Description:</strong> {{ assessmentData.assessmentDescription }}</p>
+      <p><strong>Customer Contact Email:</strong> {{ assessmentData.customerContactEmail }}</p>
+      <p><strong>Assessment Date:</strong> {{ assessmentData.assessmentDate | date }}</p>
+      <p><strong>AMA Score:</strong> {{ amaScore.toFixed(2) }}</p>
+      <p><strong>Scoring Level:</strong> {{ scoringLevel }}</p>
+    </div>
+  
+    <table>
+      <tr>
+        <th>Category</th>
+        <th>Category Score</th>
+        <th>Industry Avg</th>
+      </tr>
+      <tr *ngFor="let category of categories">
+        <td>{{ category.name }}</td>
+        <td>{{ category.categoryScore.toFixed(1) }}</td>
+        <td>{{ category.industryAvg }}</td>
+      </tr>
+    </table>
+  
+    <button class="generate-report-button">Generate Report</button>
+  </div>
+  <div *ngIf="!assessmentData">
+    <p>   Loading assessment details...</p>
+  </div>
+  
