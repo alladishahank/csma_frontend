@@ -4,12 +4,13 @@
     </button>
     <h1>Assessment Summary</h1>
     <div class="assessment-info">
+      <p><strong>Assessment Name:</strong> {{ assessmentData.assessmentName }}</p>
       <p><strong>Customer Name:</strong> {{ assessmentData.customerName }}</p>
       <p><strong>Project ID:</strong> {{ assessmentData.projectId }}</p>
       <p><strong>API Key:</strong> {{ assessmentData.apiKey }}</p>
       <p><strong>Assessment Description:</strong> {{ assessmentData.assessmentDescription }}</p>
       <p><strong>Customer Contact Email:</strong> {{ assessmentData.customerContactEmail }}</p>
-      <p><strong>Assessment Date:</strong> {{ assessmentData.assessmentDate | date }}</p>
+      <p><strong>Assessment Date:</strong> {{ assessmentData.assessmentDate | date}}</p>
       <p><strong>AMA Score:</strong> {{ amaScore.toFixed(2) }}</p>
       <p><strong>Scoring Level:</strong> {{ scoringLevel }}</p>
     </div>

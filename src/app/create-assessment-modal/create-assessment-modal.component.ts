@@ -39,6 +39,7 @@ export class CreateAssessmentModalComponent implements OnInit {
     private assessmentDataService: AssessmentDataService
   ) {
     this.createAssessmentForm = this.fb.group({
+      assessmentName: ['', Validators.required],
       customerName: ['', Validators.required],
       projectId: ['', Validators.required],
       apiKey: ['', Validators.required],
@@ -69,8 +70,9 @@ export class CreateAssessmentModalComponent implements OnInit {
         apiKey: this.createAssessmentForm.value.apiKey,
         assessmentDescription: this.createAssessmentForm.value.assessmentDescription,
         customerContactEmail: this.createAssessmentForm.value.customerContactEmail,
-        assessorName: 'John Doe', // Example, you may replace this with a proper value
-        assessmentDate: new Date().toISOString().split('T')[0] // Example, you may replace this with a proper value
+        assessmentName: this.createAssessmentForm.value.assessmentName,
+        assessorName: 'John Doe', 
+        assessmentDate: new Date().toISOString().split('T')[0] 
       };
 
       this.assessmentDataService.setAssessmentData(assessmentData);

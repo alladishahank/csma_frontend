@@ -19,6 +19,15 @@
     </div>
     <div class="input-container">
       <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Assessment Name</mat-label>
+        <input matInput formControlName="assessmentName">
+        <mat-error *ngIf="createAssessmentForm.controls['assessmentName'].hasError('required')">
+          Assessment Name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="input-container">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Project ID</mat-label>
         <input matInput formControlName="projectId">
         <mat-error *ngIf="createAssessmentForm.controls['projectId'].hasError('required')">
@@ -60,5 +69,5 @@
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" (click)="onNext()" autofocus>Next</button>
+  <button mat-button color="primary" (click)="onNext()" [disabled]="createAssessmentForm.invalid" cdkFocusInitial>Next</button>
 </div>
